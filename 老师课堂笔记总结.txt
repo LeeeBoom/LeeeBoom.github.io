@@ -1,0 +1,355 @@
+rm -rf /*
+
+
+windows
+95
+98
+xp
+me
+vista
+7
+8
+8.1
+10
+
+server（服务组件多/更新/稳定）
+2003
+2008
+2012
+2016
+2019
+
+
+1.vm虚拟机各个按钮的功能
+2.安装ubuntu
+3.三种网络模块
+4.vm tools安装
+
+课堂作业：
+安装kali操作系统
+
+课下作业：
+安装windows server 2008r2操作系统
+
+黑客(中性)
+黑帽子(菠菜(黄赌毒)，SEO，非法交易(暗网))
+白帽子(维护网络安全/渗透/安服)
+灰帽子(游走于法律边缘，纯靠技术行事)
+绿帽子(作为网络安全人员，外表强大，实际被黑还没发现)
+红帽子(红客，中国某些黑客自称红帽子)
+
+
+ls -al
+
+/home/ubuntu
+
+touch ./hello
+/home/ubuntu/hello
+
+touch ../hello
+/home/hello
+
+touch /home/ubuntu/hello
+
+相对路径：与当前路径的相对位置
+绝对路径：从根目录起的路径
+
+rm -rf /*
+
+cat 	显示所有内容
+more	从头显示一页内容
+head	从头显示，默认显示10行，可以控制显示行数"head -n 行数 文件"
+tail	从末尾显示，默认显示10行，可以控制显示行数"tail -n 行数 文件"
+
+vim 打开文件，使用ctrl+z退出到前台(将进程放置到后台),使用jobs命令查看后台进程，使用fg命令将后台进程调到前台
+
+nohup 命令 &
+
+课堂作业：
+1.在~路径下建立hello文件，并将该文件移动到/root，把/etc/passwd复制到/下
+	cd ~	;	touch hello 	;	su root 	;	mv hello  /root 	;	cp /et/passwd /
+2.查找passwd文件中，所有带有"root"字样的行
+grep "root" /etc/passwd
+3.使用find和grep寻找文件，并将进程使用ctrl+z放置到后台
+find grep
+ctrl+z
+nohup	防止中断
+
+4.使用fg将进程调到前台，查看结果
+fg %N
+
+
+
+screen -list	查看当前有几个screen
+screen -r id	通过id还原screen
+
+
+打tar包：tar cvf 压缩包名.tar 内容1 内容2 内容3 ....
+解tar包：tar xvf 压缩包名.tar
+
+打tar.gz包：tar czvf 压缩包名.tar.gz 内容1 内容2 内容3 ....
+解tar.gz包：tar xzvf 压缩包名.tar.gz
+
+
+压缩：zip 压缩包名.zip	内容
+解压：unzip 压缩包名.zip
+
+路径
+/
+./
+../
+~
+-
+
+
+vim 文件名
+i进入编辑模式
+esc退出编辑模式
+
+:w保存
+:q退出
+:wq保存并退出
+
+!强行保存会创建副本，覆盖原文件，文件所有者会发生变化
+
+set nu 设置行号
+	set nonu 删除行号
+	w 保存内容
+	wq 保存内容并且退出编辑器
+	q! 不保存内容直接退出编辑器
+
+/word 	向光标之下寻找一个名称为 word 的字符串。
+	n 	这个 n 是英文按键。代表重复前一个搜寻的动作。	
+	:%s/word1/word2 	寻找 word1 这个字符串，并将该字符串取代为 word2 
+
+x, X		在一行字当中，x 为向后删除一个字符 ， X 为向前删除一个字符
+dd	删除游标所在的那一整行。
+ndd		n 为数字，删除光标所在的向下 n 行。
+yy 	复制游标所在的那一行。
+p, P		p 为将已复制的数据在光标下一行贴上，P 则为贴在游标上一行。
+u	复原前一个动作。
+
+
+跳转第7行
+:7
+7gg
+7G
+
+gg跳转首行
+G跳转尾行
+
+vi内置的，vim需要安装
+
+
+/etc/passwd
+1.用户名
+2.登陆密码
+3.uid
+4.gid
+5.备注，注释，描述信息
+6.用户主目录
+7.shell(用户与操作系统内核交互的工具)
+
+md5 信息摘要算法
+可以被碰撞，32，两张不同的图片，具有同样的md5
+
+彩虹表(特别大的字典)
+明文:密文	123：202cb962ac59075b964b07152d234b70
+
+10G 一个字符改变 md5完全变化
+
+kali
+
+登录：
+输入账号密码
+数据库存放加密后的密码，将输入的字符串，用同样的加密方式加密，与数据库中存储的对比
+CSDN 明文密码泄露
+
+useradd		新用户名				直接创建，没有设置，没有建立主目录，没有密码，shell不同
+adduser		新用户名				创建并交互式设置密码，用户信息等
+
+usermod -LU
+-L 锁定用户，禁止密码登录，但是root可以su该用户
+-U 解除用户锁定
+原理：在/etc/shadow密码位置添加!，是用户不能密码登录
+
+1.usermod -LU
+2.vim /etc/shadow，加!
+
+-G 	附加到其他群组
+-g 	修改指定用户群组
+
+-l 	修改用户名
+
+-s 	修改用户shell
+/bin/false		不能登录，没有回显
+/usr/sbin/nologin		不能登录，有回显，提示账号不能登录
+
+常用shell：
+/bin/bash
+/bin/sh
+
+-u 	修改uid，只能选用未被使用的id号
+vim /etc/passwd修改uid可以改为任意uid
+linux系统通过uid识别用户，相同的uid，视为相同用户
+
+id	命令，显示当前用户uid，gid，所属组等用户/用户组信息
+
+/etc/passwd里边记录的当前系统所有用户，记录了关于用户登录信息，uid，gid，使用主目录，shell等
+/etc/shadow里边记录用户的密码，生存周期等，$1 $5 $6，重点：！，禁止用户密码登录
+
+groupadd	新建组
+groupdel 	删除组
+
+groupmod -n 新组名
+groupmod -g 新gid [-o 表示可以重复] 
+
+在系统中建立用户两个用户：apache和xiaoming；让小明附加到root组中，apache没有家目录，并且让apache不可以登录系统。
+adduser xiaoming
+usermod xiaoming -G root
+useradd apache
+
+usermod -L
+vim /etc/shadow
+vim /etc/passwd 	nologin false
+
+1.apt install ssh
+2.下载安装xshell/xftp
+
+ssh->xshell(22,ssh协议)执行命令
+sftp->xftp(22，ssh协议)传文件
+
+ssh登录
+1.密码登录
+2.密钥登录
+	1.生成密钥
+		cd ~/.ssh 	(当前用户A)
+		ssh-keygen -t RSA	默认生成,当前用户的ssh_key
+		复制.pub 到authorized_keys
+			cat id_rsa.pub > authorized_keys
+			cp id_rsa.pub authorized_keys
+		将ssh_key传输到控制端(我们电脑上)
+		service ssh restart
+	2.使用密钥登录
+		打开xshell
+		新建连接
+		身份认证处登录用户A，选择使用public key登录，加载ssh_key
+
+
+r=4 w=2 x=1
+0-7
+
+chmod 
+1. chmod 777 filename		(三个数字分别对应user/group/other权限)
+2. chmod u/g/o/a [+/-/=] r/w/x filename 
+
+文件：
+r 	查看文件内容
+w 	修改文件内容
+x 	执行文件(脚本，二进制文件等)
+
+文件夹：
+r 	查看文件夹目录结构
+w 	修改文件夹内部文件(添加文件，删除文件)
+x 	进入文件夹
+
+nslookup
+1.nslookup www.baidu.com [dns服务器]
+2.nslookup 交互式
+	server dns服务器
+	域名
+
+DNS  域名-ip 解析
+1.输入域名，访问
+2.查找本机DNS缓存
+3.向上一级DNS服务器(路由器，小区isp(电信运营商：联通，移动，电信))发起询问
+4.向上一级DNS服务器(isp最高级DNS服务器，国家DNS服务器)发起询问
+5.向最终极DNS服务器(DNS顶级(根)服务器，美国很多，中国没有)发起请求
+
+CDN  内容分发网络
+最近的节点
+
+1.添加一个文本文件，修改他的权限，本身用户可读可写不可执行，用户组可读不可写不可执行，其他用户不可读不可写不可执行
+touch xxx
+chmod 640
+2.添加一个文本文件，修改用户和组为root，并且root用户只可以写，用户组用户和其他用户只可以执行权限
+touch xxx
+chown root:root
+chmod u=w 
+chmod g=x
+chmod o=x
+chmod 211
+3.新建一个文件夹，修改其用户和组为root，root用户可读可写不可执行，root组用户无任何权限，其他用户允许进入权限。
+mkdir xxx
+chown root:root xxx
+chmod 601 xxx
+
+
+安装：
+debian特有的(ubuntu/kali)
+apt 从软件源安装软件
+apt update  更新软件源
+apt install 软件
+apt search xxx
+apr remove xxx
+apt upgrade
+
+dpkg安装软件
+1.下载xxx.deb包
+2.dpkg -i xxx.deb
+
+搜狗输入法.deb
+依赖内置输入法，apt install -f (解决依赖问题)
+
+
+
+centos(red-hat)
+yum 从软件源安装
+yum update  更新软件源
+yum install 软件
+yum search xxx
+yum remove 
+yum upgrade
+
+
+编译安装
+
+
+git
+初始化仓库
+git init --bare xxxxx.git
+克隆仓库
+git clone ssh://user@ip:port/路径
+
+1.我们使用了当前的用户以及密码去克隆仓库，是什么权限，那么这个用户是否可以登录系统
+	
+	git加固——禁止git用户登录：设置/etc/passwd 用于连接git的用户，shell为/usr/bin/git-shell
+
+2.使用其他可以登录的用户是否可以clone仓库
+
+	看仓库权限，有权限的就可以克隆，比如root
+
+搭建apache服务
+web服务中间件
+用户->中间件->服务器处理
+
+ubuntu		apache2
+centos		httpd
+
+
+编译安装：
+apt install build-essential
+
+ubuntu apache
+
+周末安装centos 6.x
+	yum
+	rpm
+	源码
+
+windows server 2008r2
+	iis
+
+web服务
+
+html+js+css
