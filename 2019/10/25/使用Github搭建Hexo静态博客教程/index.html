@@ -5,14 +5,14 @@
   
   <title>使用Github搭建Hexo静态博客教程 | LeeeBoom</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="GitHub�������˲ֿ�   ���ȣ�����Ҫ��һ��GitHub�˻���   ע�����¼����GitHub.com�п���һ��New repository���½��ֿ⡣   ����һ�������û�����ͬ�Ĳֿ⣬�����.github.io��Ҳ����username.github.io��   ���create repo">
+  <meta name="description" content="GitHub创建个人仓库   首先，你先要有一个GitHub账户。   注册完登录后，在GitHub.com中看到一个New repository，新建仓库。   创建一个和你用户名相同的仓库，后面加.github.io，也就是username.github.io。   点击create repository。   生成SSH添加到GitHub   打开git ba">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用Github搭建Hexo静态博客教程">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;25&#x2F;%E4%BD%BF%E7%94%A8Github%E6%90%AD%E5%BB%BAHexo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B&#x2F;index.html">
 <meta property="og:site_name" content="LeeeBoom">
-<meta property="og:description" content="GitHub�������˲ֿ�   ���ȣ�����Ҫ��һ��GitHub�˻���   ע�����¼����GitHub.com�п���һ��New repository���½��ֿ⡣   ����һ�������û�����ͬ�Ĳֿ⣬�����.github.io��Ҳ����username.github.io��   ���create repo">
+<meta property="og:description" content="GitHub创建个人仓库   首先，你先要有一个GitHub账户。   注册完登录后，在GitHub.com中看到一个New repository，新建仓库。   创建一个和你用户名相同的仓库，后面加.github.io，也就是username.github.io。   点击create repository。   生成SSH添加到GitHub   打开git ba">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-25T10:40:05.100Z">
+<meta property="og:updated_time" content="2019-10-25T10:44:20.817Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="LeeeBoom" type="application/atom+xml">
@@ -370,39 +370,39 @@
   <title></title>
  </head>
  <body>
-  <h2>GitHub�������˲ֿ�</h2>
-  ���ȣ�����Ҫ��һ��GitHub�˻���<br />
-  ע�����¼����GitHub.com�п���һ��New repository���½��ֿ⡣<br />
-  ����һ�������û�����ͬ�Ĳֿ⣬�����.github.io��Ҳ����username.github.io��<br />
-  ���create repository��<br />
-  <h2>����SSH���ӵ�GitHub</h2>
-  ��git bash<br />
+  <h2>GitHub创建个人仓库</h2>
+  首先，你先要有一个GitHub账户。<br />
+  注册完登录后，在GitHub.com中看到一个New repository，新建仓库。<br />
+  创建一个和你用户名相同的仓库，后面加.github.io，也就是username.github.io。<br />
+  点击create repository。<br />
+  <h2>生成SSH添加到GitHub</h2>
+  打开git bash<br />
   <strong>git config --global user.name "yourname"</strong><br />
   <strong>git config --global user.email "youremail"</strong><br />
-  �����yourname�������GitHub�û�����youremail������GitHub�����䣬����GitHub����֪�����ǲ��Ƕ�Ӧ�����˻���<br />
-  Ȼ�󴴽�SSH�����س���<br />
+  这里的yourname输入你的GitHub用户名，youremail输入你GitHub的邮箱，这样GitHub才能知道你是不是对应它的账户。<br />
+  然后创建SSH，疯狂回车。<br />
   <strong>ssh-keygen -t rsa -C "youremail"</strong><br />
-  ���ʱ������������Ѿ�������.ssh���ļ��У�����ĵ������ҵ�����ļ��С�<br />
-  ������GitHub��setting�У��ҵ�SSH keys������ѡ����New SSH key<br />
-  �����id_rsa.pub�������Ϣ���ƽ�ȥ��<br />
-  ��gitbash�У��鿴�Ƿ�ɹ���<br />
+  这个时候它会告诉你已经生成了.ssh的文件夹，在你的电脑中找到这个文件夹。<br />
+  而后在GitHub的setting中，找到SSH keys的设置选项，点击New SSH key<br />
+  把你的id_rsa.pub里面的信息复制进去。<br />
+  在gitbash中，查看是否成功。<br />
   <strong>-T git@github.com</strong><br />
-  <h2>����_config.yml</h2>
+  <h2>配置_config.yml</h2>
   1.deploy:<br />
   2. type: git<br />
   3. repo: git@github.com:YourgithubName/YourgithubName.github.io.git<br />
   4. branch: master<br />
-  ���ʱ����Ҫ�Ȱ�װdeploy-git��Ҳ���ǲ�����������������������GitHub��<br />
+  这个时候需要先安装deploy-git，也就是部署的命令，这样你才能用命令部署到GitHub。<br />
   <strong>
    install hexo-deployer-git --save<br />
    hexo clean<br />
    hexo generate<br />
    hexo deploy<br />
   </strong>
-  ���� hexo clean�������֮ǰ���ɵĶ�����Ҳ���Բ��ӡ�<br/>
-  hexo generate ����˼�壬���ɾ�̬���£������� hexo g��д��<br/>
-  hexo deploy �������£�������hexo d��д��<br/>
-  ���������http://yourname.github.io<br/>
+  其中 hexo clean清除了你之前生成的东西，也可以不加。<br/>
+  hexo generate 顾名思义，生成静态文章，可以用 hexo g缩写。<br/>
+  hexo deploy 部署文章，可以用hexo d缩写。<br/>
+  最后访问这个http://yourname.github.io<br/>
  </body>
 </html>
       
@@ -462,7 +462,7 @@
         <p><span>本文标题:</span><a href="/2019/10/25/%E4%BD%BF%E7%94%A8Github%E6%90%AD%E5%BB%BAHexo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">使用Github搭建Hexo静态博客教程</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 LeeeBoom 的个人博客">LeeeBoom</a></p>
         <p><span>发布时间:</span>2019年10月25日 - 18时39分</p>
-        <p><span>最后更新:</span>2019年10月25日 - 18时40分</p>
+        <p><span>最后更新:</span>2019年10月25日 - 18时44分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2019/10/25/%E4%BD%BF%E7%94%A8Github%E6%90%AD%E5%BB%BAHexo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/" title="使用Github搭建Hexo静态博客教程">http://yoursite.com/2019/10/25/%E4%BD%BF%E7%94%A8Github%E6%90%AD%E5%BB%BAHexo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/10/25/%E4%BD%BF%E7%94%A8Github%E6%90%AD%E5%BB%BAHexo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/　　作者: LeeeBoom" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -481,7 +481,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number">1.</span> <span class="toc-text">GitHub�������˲ֿ�</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number">2.</span> <span class="toc-text">����SSH���ӵ�GitHub</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number">3.</span> <span class="toc-text">����_config.yml</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number">1.</span> <span class="toc-text">GitHub创建个人仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number">2.</span> <span class="toc-text">生成SSH添加到GitHub</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number">3.</span> <span class="toc-text">配置_config.yml</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 

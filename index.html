@@ -365,39 +365,39 @@
   <title></title>
  </head>
  <body>
-  <h2>GitHub�������˲ֿ�</h2>
-  ���ȣ�����Ҫ��һ��GitHub�˻���<br />
-  ע�����¼����GitHub.com�п���һ��New repository���½��ֿ⡣<br />
-  ����һ�������û�����ͬ�Ĳֿ⣬�����.github.io��Ҳ����username.github.io��<br />
-  ���create repository��<br />
-  <h2>����SSH���ӵ�GitHub</h2>
-  ��git bash<br />
+  <h2>GitHub创建个人仓库</h2>
+  首先，你先要有一个GitHub账户。<br />
+  注册完登录后，在GitHub.com中看到一个New repository，新建仓库。<br />
+  创建一个和你用户名相同的仓库，后面加.github.io，也就是username.github.io。<br />
+  点击create repository。<br />
+  <h2>生成SSH添加到GitHub</h2>
+  打开git bash<br />
   <strong>git config --global user.name "yourname"</strong><br />
   <strong>git config --global user.email "youremail"</strong><br />
-  �����yourname�������GitHub�û�����youremail������GitHub�����䣬����GitHub����֪�����ǲ��Ƕ�Ӧ�����˻���<br />
-  Ȼ�󴴽�SSH�����س���<br />
+  这里的yourname输入你的GitHub用户名，youremail输入你GitHub的邮箱，这样GitHub才能知道你是不是对应它的账户。<br />
+  然后创建SSH，疯狂回车。<br />
   <strong>ssh-keygen -t rsa -C "youremail"</strong><br />
-  ���ʱ������������Ѿ�������.ssh���ļ��У�����ĵ������ҵ�����ļ��С�<br />
-  ������GitHub��setting�У��ҵ�SSH keys������ѡ����New SSH key<br />
-  �����id_rsa.pub�������Ϣ���ƽ�ȥ��<br />
-  ��gitbash�У��鿴�Ƿ�ɹ���<br />
+  这个时候它会告诉你已经生成了.ssh的文件夹，在你的电脑中找到这个文件夹。<br />
+  而后在GitHub的setting中，找到SSH keys的设置选项，点击New SSH key<br />
+  把你的id_rsa.pub里面的信息复制进去。<br />
+  在gitbash中，查看是否成功。<br />
   <strong>-T git@github.com</strong><br />
-  <h2>����_config.yml</h2>
+  <h2>配置_config.yml</h2>
   1.deploy:<br />
   2. type: git<br />
   3. repo: git@github.com:YourgithubName/YourgithubName.github.io.git<br />
   4. branch: master<br />
-  ���ʱ����Ҫ�Ȱ�װdeploy-git��Ҳ���ǲ�����������������������GitHub��<br />
+  这个时候需要先安装deploy-git，也就是部署的命令，这样你才能用命令部署到GitHub。<br />
   <strong>
    install hexo-deployer-git --save<br />
    hexo clean<br />
    hexo generate<br />
    hexo deploy<br />
   </strong>
-  ���� hexo clean�������֮ǰ���ɵĶ�����Ҳ���Բ��ӡ�<br/>
-  hexo generate ����˼�壬���ɾ�̬���£������� hexo g��д��<br/>
-  hexo deploy �������£�������hexo d��д��<br/>
-  ���������http://yourname.github.io<br/>
+  其中 hexo clean清除了你之前生成的东西，也可以不加。<br/>
+  hexo generate 顾名思义，生成静态文章，可以用 hexo g缩写。<br/>
+  hexo deploy 部署文章，可以用hexo d缩写。<br/>
+  最后访问这个http://yourname.github.io<br/>
  </body>
 </html>
       
